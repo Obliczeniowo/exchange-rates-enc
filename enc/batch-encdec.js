@@ -154,7 +154,7 @@ function compareFoldersContentsRecursively(inputFolder, outputFolder) {
   const exclude = ['.git']
 
   for (const item of items) {
-    const inputPath = path.join(inputFolder, item).replace('.enc.', '.');
+    const inputPath = path.join(inputFolder, item).replace('.enc', '');
     const outputPath = path.join(outputFolder, item);
     console.log(inputPath, outputPath)
     if (!exclude.includes(item)) {
