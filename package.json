@@ -13,7 +13,7 @@
     "build:explorer": "npm run copy-assets && ng build --configuration production --base-href=./",
     "build-git": "npm run build:explorer && cd scripts && node build-and-deploy",
     "encrypt": "cd ./enc && node batch-encdec.js",
-    "decrypt": "cd ./enc && node batch-encdec.js config-decrypt.js"
+    "decrypt": "cd ./enc && node batch-encdec.js config-decrypt.json"
 
   },
   "prettier": {
