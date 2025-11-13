@@ -14,7 +14,6 @@
     "build-git": "npm run build:explorer && cd scripts && node build-and-deploy",
     "encrypt": "cd ./enc && node batch-encdec.js",
     "decrypt": "cd ./enc && node batch-encdec.js config-decrypt.json"
-
   },
   "prettier": {
     "printWidth": 100,
@@ -38,6 +37,7 @@
     "@angular/forms": "^20.2.0",
     "@angular/platform-browser": "^20.2.0",
     "@angular/router": "^20.2.0",
+    "country-flag-icons": "^1.5.21",
     "fs-extra": "^11.3.2",
     "jspdf": "^3.0.3",
     "node-fetch": "^3.3.2",
