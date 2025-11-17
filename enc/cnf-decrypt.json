@@ -16,7 +16,9 @@
             "encrypted"
         ],
         "copy": [
-            ".gitignore"
+            ".gitignore",
+            "cnf-decrypt.json",
+            "cnf.json"
         ]
     }
 ]
