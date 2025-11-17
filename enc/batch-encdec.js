@@ -115,9 +115,12 @@ function decryptFile(inputFile, outputFile, aesSize, password) {
   }
 }
 
-function processFolderRecursive(inputFolder, outputFolder, mode, aesSize, password, override, exclude) {
+function processFolderRecursive(inputFolder, outputFolder, mode, aesSize, password, override, exclude, copy) {
   const items = fs.readdirSync(inputFolder);
   for (const item of items) {
+    if (copy.includes(item)) {
+      fs.copyFileSync(path.join(inputFolder, item), path.join(outputFolder, item));
+    }
     if (exclude.includes(item)) {
       console.log('Exclude', item, exclude)
       continue;
@@ -130,7 +133,7 @@ function processFolderRecursive(inputFolder, outputFolder, mode, aesSize, passwo
     const outputPath = path.join(outputFolder, item);
 
     if (fs.lstatSync(inputPath).isDirectory()) {
-      processFolderRecursive(inputPath, outputPath, mode, aesSize, password, override, exclude);
+      processFolderRecursive(inputPath, outputPath, mode, aesSize, password, override, exclude, copy);
     } else if (fs.lstatSync(inputPath).isFile()) {
       if (mode === 'encrypt') {
         const outFile = `${outputPath}.enc`;
@@ -228,8 +231,9 @@ async function runBatch(configPath) {
     console.log('Build check', config[index].build);
     /**
      * config.build === true means it is build version of configuration so need compare already exist one with not existing one
+     * config.mode === 'encrypt' as it is for encryption only
      */
-    if (config[index].build) {
+    if (config[index].build && config[index].mode === 'encrypt') {
       /** remove files if not exist inside input folder */
       try {
         compareFoldersContentsRecursively(inputFolder, outputFolder, currentConfig.exclude || []);
@@ -238,7 +242,7 @@ async function runBatch(configPath) {
         throw new Error('You must initialize build folder with git repository of builded lib ' + inputFolder + ' ' + outputFolder)
       }
     }
-    processFolderRecursive(inputFolder, outputFolder, currentConfig.mode, aesSize, password, override, currentConfig.exclude || []);
+    processFolderRecursive(inputFolder, outputFolder, currentConfig.mode, aesSize, password, override, currentConfig.exclude || [], currentConfig.copy || []);
   }
 }
 
