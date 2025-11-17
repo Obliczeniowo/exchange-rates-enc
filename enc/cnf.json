@@ -1,0 +1,24 @@
+[
+    {
+        "mode": "encrypt",
+        "path": "../",
+        "output": "../encrypted",
+        "password": "password",
+        "override": true,
+        "exclude": [
+            ".gitignore",
+            ".git",
+            "dist",
+            ".vscode",
+            "node_modules",
+            "config-decrypt.json",
+            "config.json",
+            "instal",
+            "encrypted"
+        ],
+        "copy": [
+            ".gitignore"
+        ],
+        "build": true
+    }
+]

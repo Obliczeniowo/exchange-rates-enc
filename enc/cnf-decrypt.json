@@ -1,0 +1,22 @@
+[
+    {
+        "mode": "decrypt",
+        "path": "../encrypted",
+        "output": "../",
+        "password": "password",
+        "override": true,
+        "exclude": [
+            ".gitignore",
+            ".git",
+            "node_modules",
+            "package.json",
+            "config-decrypt.json",
+            "config.json",
+            "instal",
+            "encrypted"
+        ],
+        "copy": [
+            ".gitignore"
+        ]
+    }
+]
