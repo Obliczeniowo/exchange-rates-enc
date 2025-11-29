@@ -12,8 +12,8 @@
     "copy-assets": "node ./node_modules/@obliczeniowo/elementary/assets/scripts/copy.js ./src/assets/",
     "build:explorer": "npm run copy-assets && ng build --configuration production --base-href=./",
     "build-git": "npm run build:explorer && cd scripts && node build-and-deploy",
-    "encrypt": "cd ./enc && node batch-encdec.js",
-    "decrypt": "cd ./enc && node batch-encdec.js config-decrypt.json"
+    "encrypt": "cd ./enc && node batch-encdec.js ../config-encrypt.json",
+    "decrypt": "cd ./enc && node batch-encdec.js ../config-decrypt.json"
   },
   "prettier": {
     "printWidth": 100,
@@ -37,9 +37,11 @@
     "@angular/forms": "^20.2.0",
     "@angular/platform-browser": "^20.2.0",
     "@angular/router": "^20.2.0",
+    "country-flag-emoji-polyfill": "^0.1.8",
     "country-flag-icons": "^1.5.21",
     "fs-extra": "^11.3.2",
     "jspdf": "^3.0.3",
+    "minimist": "^1.2.8",
     "node-fetch": "^3.3.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
