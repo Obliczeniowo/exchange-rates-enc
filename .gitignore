@@ -46,3 +46,4 @@ config*.json
 /instal
 /build
 /encrypted
+/enc
