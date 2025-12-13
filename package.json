@@ -5,12 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run copy-assets && ng serve",
-    "build": "npm run copy-assets && ng build",
+    "build": "npm run copy-assets && ng build --configuration production --base-href=./",
     "instal": "node instal",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "copy-assets": "node ./node_modules/@obliczeniowo/elementary/assets/scripts/copy.js ./src/assets/",
-    "build:explorer": "npm run copy-assets && ng build --configuration production --base-href=./",
     "build-git": "npm run build:explorer && cd scripts && node build-and-deploy",
     "encrypt": "cd ./enc && node batch-encdec.js ../config-encrypt.json",
     "decrypt": "cd ./enc && node batch-encdec.js ../config-decrypt.json"
